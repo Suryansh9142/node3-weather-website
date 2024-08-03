@@ -1,4 +1,3 @@
-console.log('Client side javascript file is loaded!')
 
 // 
 // Q) Goal: Reander content to paragraphs
