@@ -9,11 +9,7 @@ const geoCode = (address, callback) => {
         } else if (body.features.length === 0) {
             callback('Unable to find location. Try another search. ',undefined) 
         } else {
-            callback(undefined, {
-                latitude: body.features[0].center[1],
-                longitude: body.features[0].center[0],
-                location: body.features[0].place_name
-            })
+            callback(undefined, body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + ' degress out. This high today is ' + body.daily.data[0].temperatureHigh + ' with a low of ' + body.daily.data[0].temperatureLow + '. There is a ' + body.currently.precipProbability + '% chance of rain.')
         }
     })
 }
