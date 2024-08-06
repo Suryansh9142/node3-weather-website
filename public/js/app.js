@@ -29,8 +29,8 @@ weatherForm.addEventListener('submit', (e) => {
                 messageOne.textContent = data.error
             } else {
                 messageOne.textContent = data.location
-                // messageTwo.textContent = data.forecast
-                messageTwo.textContent = Object.entries(data.forecast)
+                messageTwo.textContent = data.forecast
+                // messageTwo.textContent = Object.entries(data.forecast)
                 // .map(([key, value]) => `${key}: ${value}`)
                 // .join('\n');
                 console.log(data.location)
