@@ -9,7 +9,11 @@ const geoCode = (address, callback) => {
         } else if (body.features.length === 0) {
             callback('Unable to find location. Try another search. ',undefined) 
         } else {
-            callback(undefined, 'The weather here is ' + current.weather_descriptions[0] + '. And the Temperature here is ' + current.temperature + ' degrees, but we are feels like ' + current.feelslike + ' degrees, and the humidity here is ' + current.humidity + '.')
+            callback(undefined, {
+                latitude: body.features[0].center[1],
+                longitude: body.features[0].center[0],
+                location: body.features[0].place_name
+            })
         }
     })
 }
@@ -32,7 +36,7 @@ const forecast = (latitude, longitude, callback) => {
                 callback('Unable to find location. Try another search.', undefined);
             } else {
                 const current = body.current;
-                callback(undefined, body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + ' degress out. This high today is ' + body.daily.data[0].temperatureHigh + ' with a low of ' + body.daily.data[0].temperatureLow + '. There is a ' + body.currently.precipProbability + '% chance of rain.');
+                callback(undefined, 'The weather here is ' + current.weather_descriptions[0] + '. And the Temperature here is ' + current.temperature + ' degrees, but we are feels like ' + current.feelslike + ' degrees, and the humidity here is ' + current.humidity + '.');
             }
         }
     });
